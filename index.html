@@ -1,100 +1,367 @@
+
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Dekiller: tecnología, creatividad, anime, videojuegos y proyectos personales.">
+  <meta name="description" content="Dekiller: tecnología, creatividad, anime, videojuegos, inteligencia artificial y proyectos personales.">
+  <meta name="author" content="Dekiller">
+  <meta property="og:title" content="Dekiller — Mi mundo, mis ideas">
+  <meta property="og:description" content="Explora mis proyectos, creaciones y universo creativo.">
+  <meta property="og:type" content="website">
   <title>Dekiller — Mi mundo, mis ideas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="stars" aria-hidden="true"></div>
+
   <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="Dekiller, inicio"><span class="brand-mark">D</span><span>DEKILLER<span class="brand-dot">.</span></span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <a class="brand" href="#inicio" aria-label="Dekiller, inicio">
+      <span class="brand-mark">D</span>
+      <span>DEKILLER<span class="brand-dot">.</span></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="mainNav">☰</button>
+
     <nav id="mainNav" aria-label="Navegación principal">
-      <a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#intereses">Intereses</a><a href="#creaciones">Creaciones</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#intereses">Intereses</a>
+      <a href="#creaciones">Creaciones</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <main>
+    <!-- INICIO -->
     <section class="hero section" id="inicio">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span> MI ESPACIO EN INTERNET</p>
+        <p class="eyebrow">
+          <span class="pulse"></span> MI ESPACIO EN INTERNET
+        </p>
+
         <h1>Mi mundo,<br><span>mis ideas.</span></h1>
-        <p class="hero-text">Soy <strong>Dekiller</strong>. Exploro la tecnología, creo proyectos desde Android y encuentro inspiración en el anime, los videojuegos y las palabras.</p>
-        <div class="hero-actions"><a class="button primary" href="#proyectos">Explorar proyectos <span>↗</span></a><a class="button ghost" href="#sobre-mi">Conocerme</a></div>
-        <div class="hero-meta"><span>✦ Creatividad</span><span>⌘ Tecnología</span><span>♡ Anime & gaming</span></div>
+
+        <p class="hero-text">
+          Soy <strong>Dekiller</strong>. Exploro la tecnología,
+          creo proyectos desde Android y encuentro inspiración
+          en el anime, los videojuegos y las palabras.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#proyectos">
+            Explorar proyectos <span>↗</span>
+          </a>
+          <a class="button ghost" href="#sobre-mi">Conocerme</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>✦ Creatividad</span>
+          <span>⌘ Tecnología</span>
+          <span>♡ Anime &amp; gaming</span>
+        </div>
       </div>
-      <div class="hero-art" aria-label="Ilustración decorativa abstracta">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="moon"></div><div class="crystal crystal-one"></div><div class="crystal crystal-two"></div>
-        <div class="art-label"><span class="tiny-dot"></span> DEKILLER / ONLINE</div>
-        <div class="art-bottom"><span>CREAR</span><span>·</span><span>APRENDER</span><span>·</span><span>EVOLUCIONAR</span></div>
+
+      <div class="hero-art hero-art-image">
+        <img
+          src="assets/dekiller-portada.jpg"
+          alt="Portada de Dekiller con estética anime y tecnología azul neón"
+          fetchpriority="high">
       </div>
     </section>
 
+    <!-- SOBRE MÍ -->
     <section class="section about" id="sobre-mi">
-      <div class="section-heading"><p class="eyebrow">01 / IDENTIDAD</p><h2>Un poco <span>sobre mí</span></h2></div>
+      <div class="section-heading">
+        <p class="eyebrow">01 / IDENTIDAD</p>
+        <h2>Un poco <span>sobre mí</span></h2>
+      </div>
+
       <div class="about-card">
-        <div class="avatar">D<span>✦</span></div>
-        <div><h3>Hola, soy Dekiller.</h3><p>Me interesa crear, experimentar y aprender haciendo. Trabajo en ideas de programación y herramientas de inteligencia artificial desde mi teléfono, además de explorar la edición audiovisual y el diseño digital.</p><p class="muted">Esta es mi página personal. Iré agregando aquí más de mi historia cuando decida qué quiero compartir públicamente.</p></div>
+        <div class="avatar avatar-image">
+          <img
+            src="assets/dekiller-avatar.jpg"
+            alt="Avatar de Dekiller"
+            loading="lazy">
+        </div>
+
+        <div>
+          <h3>Hola, soy Dekiller.</h3>
+          <p>
+            Me interesa crear, experimentar y aprender haciendo.
+            Trabajo en ideas de programación y herramientas de
+            inteligencia artificial desde mi teléfono, además de
+            explorar la edición audiovisual y el diseño digital.
+          </p>
+          <p class="muted">
+            Esta es mi página personal. Iré compartiendo mis
+            proyectos e ideas a medida que crezcan.
+          </p>
+        </div>
       </div>
     </section>
 
+    <!-- PROYECTOS -->
     <section class="section" id="proyectos">
-      <div class="section-heading"><p class="eyebrow">02 / EN CONSTRUCCIÓN</p><h2>Proyectos y <span>tecnología</span></h2><p class="section-intro">Ideas que estoy desarrollando, probando o aprendiendo a construir.</p></div>
+      <div class="section-heading">
+        <p class="eyebrow">02 / TECNOLOGÍA</p>
+        <h2>Proyectos y <span>tecnología</span></h2>
+        <p class="section-intro">
+          Ideas que estoy desarrollando, probando o aprendiendo a construir.
+        </p>
+      </div>
+
       <div class="card-grid">
-        <article class="project-card featured"><div class="card-icon">✧</div><p class="card-kicker">IA · DESARROLLO</p><h3>Dekiller AI</h3><p>Un proyecto personal para crear un asistente de IA con chat, memoria y herramientas. La idea es conectar sus funciones bajo un núcleo común.</p><span class="tag">En desarrollo</span></article>
-        <article class="project-card"><div class="card-icon">⌘</div><p class="card-kicker">ANDROID · CÓDIGO</p><h3>Herramientas móviles</h3><p>Experimentos y utilidades creadas desde Android con Termux, Node.js y Python, sin depender de un ordenador.</p><span class="tag">Laboratorio personal</span></article>
-        <article class="project-card"><div class="card-icon">◈</div><p class="card-kicker">WEB · EXPERIMENTOS</p><h3>Proyectos web</h3><p>Interfaces, asistentes y pequeñas aplicaciones que voy construyendo y mejorando con cada prueba.</p><span class="tag">En aprendizaje</span></article>
+        <article class="project-card featured">
+          <div class="card-icon">✧</div>
+          <p class="card-kicker">IA · DESARROLLO</p>
+          <h3>Dekiller AI</h3>
+          <p>
+            Un proyecto personal para crear un asistente de inteligencia
+            artificial con chat, memoria y herramientas conectadas bajo
+            un núcleo común.
+          </p>
+          <span class="tag">En desarrollo</span>
+        </article>
+
+        <article class="project-card">
+          <div class="card-icon">⌘</div>
+          <p class="card-kicker">ANDROID · CÓDIGO</p>
+          <h3>Herramientas móviles</h3>
+          <p>
+            Experimentos y utilidades creadas desde Android con Termux,
+            Node.js y Python, sin depender de un ordenador.
+          </p>
+          <span class="tag">Laboratorio personal</span>
+        </article>
+
+        <article class="project-card">
+          <div class="card-icon">◈</div>
+          <p class="card-kicker">WEB · EXPERIMENTOS</p>
+          <h3>Proyectos web</h3>
+          <p>
+            Interfaces, asistentes y pequeñas aplicaciones que voy
+            construyendo y mejorando con cada prueba.
+          </p>
+          <span class="tag">En aprendizaje</span>
+        </article>
       </div>
-      <p class="notice">Los proyectos se describen como trabajos personales; añade enlaces públicos solo cuando estén listos para mostrarse.</p>
+
+      <p class="notice">
+        Los proyectos están en evolución. Añadiré enlaces públicos
+        cuando estén listos para mostrarse.
+      </p>
     </section>
 
+    <!-- INTERESES -->
     <section class="section interests" id="intereses">
-      <div class="section-heading"><p class="eyebrow">03 / INSPIRACIÓN</p><h2>Anime, juegos y <span>universos</span></h2><p class="section-intro">Algunas de las cosas que forman parte de mi lado creativo.</p></div>
+      <div class="section-heading">
+        <p class="eyebrow">03 / INSPIRACIÓN</p>
+        <h2>Anime, juegos y <span>universos</span></h2>
+        <p class="section-intro">
+          Algunas de las cosas que forman parte de mi lado creativo.
+        </p>
+      </div>
+
       <div class="interest-grid">
-        <article class="interest-card"><span class="interest-symbol">✦</span><h3>Anime</h3><p>Historias, personajes y escenas que inspiran ideas, emociones y estética visual.</p></article>
-        <article class="interest-card"><span class="interest-symbol">⚔</span><h3>Videojuegos</h3><p>Me atraen los desafíos, la exploración y los juegos de acción con dificultad exigente.</p></article>
-        <article class="interest-card"><span class="interest-symbol">♫</span><h3>Música</h3><p>Sonidos y canciones que acompañan mis sesiones creativas y mis proyectos.</p></article>
+        <article class="interest-card">
+          <span class="interest-symbol">✦</span>
+          <h3>Anime</h3>
+          <p>
+            Historias, personajes y escenas que inspiran ideas,
+            emociones y estética visual.
+          </p>
+        </article>
+
+        <article class="interest-card">
+          <span class="interest-symbol">⚔</span>
+          <h3>Videojuegos</h3>
+          <p>
+            Me atraen los desafíos, la exploración y los juegos
+            de acción con dificultad exigente.
+          </p>
+        </article>
+
+        <article class="interest-card">
+          <span class="interest-symbol">♫</span>
+          <h3>Música</h3>
+          <p>
+            Sonidos y canciones que acompañan mis sesiones
+            creativas y mis proyectos.
+          </p>
+        </article>
       </div>
     </section>
 
+    <!-- CREACIONES -->
     <section class="section" id="creaciones">
-      <div class="section-heading"><p class="eyebrow">04 / EXPRESIÓN</p><h2>Creaciones y <span>palabras</span></h2><p class="section-intro">Un espacio para compartir mis textos, poemas, diseños y contenido audiovisual.</p></div>
+      <div class="section-heading">
+        <p class="eyebrow">04 / EXPRESIÓN</p>
+        <h2>Creaciones y <span>palabras</span></h2>
+        <p class="section-intro">
+          Un espacio para mis textos, poemas, diseños y contenido audiovisual.
+        </p>
+      </div>
+
       <div class="creation-panel">
         <div class="creation-mark">“</div>
-        <div><p class="poem">A veces, una idea empieza como un susurro.<br>La escribo, la imagino y la convierto en algo mío.</p><p class="signature">— dekiller 🩵✨</p></div>
-      </div>
-      <div class="creation-links"><div><span>01</span><strong>Poemas y reflexiones</strong><small>Añadir mis textos seleccionados</small></div><div><span>02</span><strong>Diseño y miniaturas</strong><small>Añadir imágenes del portafolio</small></div><div><span>03</span><strong>Vídeos y ediciones</strong><small>Añadir enlaces a publicaciones</small></div></div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="section-heading"><p class="eyebrow">05 / PORTAFOLIO</p><h2>Lo que puedo <span>crear</span></h2><p class="section-intro">Servicios creativos que quiero mostrar y desarrollar.</p></div>
-      <div class="service-grid">
-        <article class="service-card"><span>▧</span><h3>Edición de vídeo</h3><p>Ediciones para contenido corto, gaming y redes sociales.</p></article>
-        <article class="service-card"><span>◩</span><h3>Miniaturas</h3><p>Diseños llamativos para vídeos y contenido digital.</p></article>
-        <article class="service-card"><span>✧</span><h3>Imágenes con IA</h3><p>Conceptos visuales y recursos creativos asistidos por IA.</p></article>
-        <article class="service-card"><span>♧</span><h3>PNGtubers</h3><p>Ideas y recursos visuales para avatares de creadores.</p></article>
-      </div>
-      <p class="notice">Portafolio en preparación. Añade ejemplos reales y condiciones del servicio antes de aceptar encargos.</p>
-    </section>
-
-    <section class="section contact" id="contacto">
-      <div class="contact-box"><p class="eyebrow">06 / CONECTEMOS</p><h2>Encuéntrame <span>por aquí.</span></h2><p>Pronto añadiré mis perfiles oficiales y la forma de contactarme. Por ahora, esta sección queda preparada para tus enlaces.</p>
-        <div class="social-list">
-          <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer"><span class="social-icon">♪</span><span><strong>TikTok</strong><small>Agregar mi perfil oficial</small></span><b>↗</b></a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><span class="social-icon">⌘</span><span><strong>GitHub</strong><small>Agregar mi perfil oficial</small></span><b>↗</b></a>
-          <a href="mailto:TU-CORREO@example.com"><span class="social-icon">✉</span><span><strong>Correo</strong><small>Reemplazar por un correo público</small></span><b>↗</b></a>
+        <div>
+          <p class="poem">
+            A veces, una idea empieza como un susurro.<br>
+            La escribo, la imagino y la convierto en algo mío.
+          </p>
+          <p class="signature">— dekiller 🩵✨</p>
         </div>
-        <p class="privacy-note">Antes de publicar, cambia los enlaces de ejemplo por tus perfiles. No incluyas datos que no quieras hacer públicos.</p>
+      </div>
+
+      <div class="creation-links">
+        <div>
+          <span>01</span>
+          <strong>Poemas y reflexiones</strong>
+          <small>Palabras que expresan ideas y emociones.</small>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>Diseño y miniaturas</strong>
+          <small>Creatividad visual para contenido digital.</small>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>Vídeos y ediciones</strong>
+          <small>Contenido audiovisual y gaming.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="section-heading">
+        <p class="eyebrow">05 / PORTAFOLIO</p>
+        <h2>Lo que puedo <span>crear</span></h2>
+        <p class="section-intro">
+          Servicios creativos que quiero mostrar y desarrollar.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <span>▧</span>
+          <h3>Edición de vídeo</h3>
+          <p>Ediciones para contenido corto, gaming y redes sociales.</p>
+        </article>
+
+        <article class="service-card">
+          <span>◩</span>
+          <h3>Miniaturas</h3>
+          <p>Diseños llamativos para vídeos y contenido digital.</p>
+        </article>
+
+        <article class="service-card">
+          <span>✧</span>
+          <h3>Imágenes con IA</h3>
+          <p>Conceptos visuales y recursos creativos asistidos por IA.</p>
+        </article>
+
+        <article class="service-card">
+          <span>♧</span>
+          <h3>PNGtubers</h3>
+          <p>Ideas y recursos visuales para avatares de creadores.</p>
+        </article>
+      </div>
+
+      <p class="notice">
+        Portafolio en preparación. Los servicios y su disponibilidad
+        se confirmarán al publicar ejemplos y condiciones.
+      </p>
+    </section>
+
+    <!-- CONTACTO Y REDES -->
+    <section class="section contact" id="contacto">
+      <div class="contact-box">
+        <p class="eyebrow">06 / CONECTEMOS</p>
+        <h2>Encuéntrame <span>por aquí.</span></h2>
+        <p>
+          Encuentra mis publicaciones, proyectos creativos y novedades
+          en mis redes. También puedes visitar mi página de Ko-fi.
+        </p>
+
+        <div class="social-list">
+          <a
+            href="https://www.tiktok.com/@la_guarderia_de_miku"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span class="social-icon">♪</span>
+            <span>
+              <strong>TikTok</strong>
+              <small>@la_guarderia_de_miku</small>
+            </span>
+            <b>↗</b>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@Dekillerkageno"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span class="social-icon">▶</span>
+            <span>
+              <strong>YouTube</strong>
+              <small>@Dekillerkageno</small>
+            </span>
+            <b>↗</b>
+          </a>
+
+          <a
+            href="https://www.instagram.com/la_guarderia_de_miku/"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span class="social-icon">◎</span>
+            <span>
+              <strong>Instagram</strong>
+              <small>@la_guarderia_de_miku</small>
+            </span>
+            <b>↗</b>
+          </a>
+
+          <a
+            href="https://ko-fi.com/dekiller"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span class="social-icon">☕</span>
+            <span>
+              <strong>Ko-fi</strong>
+              <small>Apoya mis proyectos</small>
+            </span>
+            <b>↗</b>
+          </a>
+        </div>
+
+        <p class="privacy-note">
+          Gracias por visitar mi espacio y apoyar mis proyectos creativos.
+        </p>
       </div>
     </section>
   </main>
 
-  <footer><a class="brand" href="#inicio"><span class="brand-mark">D</span><span>DEKILLER<span class="brand-dot">.</span></span></a><p>Hecho con ideas, paciencia y un toque de azul. <span>© <span id="year"></span> Dekiller</span></p><a href="#inicio" class="back-top">Volver arriba ↑</a></footer>
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">D</span>
+      <span>DEKILLER<span class="brand-dot">.</span></span>
+    </a>
+
+    <p>
+      Hecho con ideas, paciencia y un toque de azul.
+      <span>© <span id="year"></span> Dekiller</span>
+    </p>
+
+    <a href="#inicio" class="back-top">Volver arriba ↑</a>
+  </footer>
+
   <script src="script.js"></script>
 </body>
-</html>
+  </html>
+  
