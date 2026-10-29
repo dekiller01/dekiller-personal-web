@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Proyectos de Dekiller: inteligencia artificial, herramientas desde Android y experimentos web.">
+  <meta name="author" content="Dekiller">
+  <meta property="og:title" content="Proyectos — Dekiller">
+  <meta property="og:description" content="Asistentes de IA, herramientas con Termux y experimentos web hechos desde el móvil.">
+  <meta property="og:type" content="website">
+  <title>Proyectos — Dekiller</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Extras solo para la página de proyectos (usan las variables de style.css) */
+    .page-hero{padding-bottom:10px}
+    .page-hero h1{font:700 clamp(38px,6vw,60px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-2px;margin:0 0 14px}
+
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+    .filters button{font:700 12px 'DM Sans',sans-serif;color:#b7c9dc;background:transparent;border:1px solid var(--line);
+      border-radius:30px;padding:9px 16px;cursor:pointer;transition:.2s}
+    .filters button:hover{border-color:rgba(90,207,255,.6);color:var(--cyan)}
+    .filters button.on{background:linear-gradient(100deg,#46aef0,#8be4ff);color:#04111e;border-color:transparent}
+
+    .group{padding-top:50px;padding-bottom:30px}
+    .group.hidden{display:none}
+
+    .project-card{display:flex;flex-direction:column}
+    .project-card .tag{align-self:flex-start;margin-top:auto}
+    .project-card p:not(.card-kicker){margin-bottom:12px}
+    .shot{aspect-ratio:16/9;margin:-23px -23px 18px;border-radius:16px 16px 0 0;overflow:hidden;display:grid;place-items:center;
+      background:radial-gradient(circle at 50% 40%,#123a5b 0,#0a1c30 55%,#07111f);border-bottom:1px solid var(--line);
+      color:#5bc7ff80;font-size:9px;letter-spacing:1.8px}
+    .shot img{width:100%;height:100%;object-fit:cover;display:block}
+    .shot-img{aspect-ratio:5/4}
+    .shot-img img{object-position:top}
+    .show{font-size:11px;color:#8fa9c2;border-left:2px solid #2d739b;padding-left:10px;margin:0 0 14px}
+    .show b{color:#cfe8fb}
+    .card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+    .card-foot .tag{margin-top:0}
+    .card-link{font-size:11px;font-weight:700;color:#8bdcff}
+    .card-link:hover{color:#fff}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+    .chips span{font-size:10px;color:#9be2ff;background:#0f2840;border:1px solid #1d4666;border-radius:6px;padding:2px 8px}
+
+    /* Estados */
+    .tag.ok{border-color:#2fa37a;color:#7ff0c3}
+    .tag.wip{border-color:#2d739b;color:#9be2ff}
+    .tag.idea{border-color:#6a5bb5;color:#c3b6ff}
+
+    .card-grid.two{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:760px){
+      .card-grid.two{grid-template-columns:1fr}
+      .shot{margin:-21px -21px 16px}
+      .filters button{min-height:40px}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html#inicio" aria-label="Dekiller, inicio">
+      <span class="brand-mark">D</span>
+      <span>DEKILLER<span class="brand-dot">.</span></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="mainNav">☰</button>
+
+    <nav id="mainNav" aria-label="Navegación principal">
+      <a href="index.html#sobre-mi">Sobre mí</a>
+      <a href="proyectos.html" style="color:var(--cyan)" aria-current="page">Proyectos</a>
+      <a href="index.html#intereses">Intereses</a>
+      <a href="index.html#creaciones">Creaciones</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- CABECERA -->
+    <section class="section page-hero">
+      <p class="eyebrow"><span class="pulse"></span> PORTAFOLIO</p>
+      <h1>Proyectos y <span>tecnología</span></h1>
+      <p class="section-intro">
+        Lo que estoy construyendo desde mi teléfono: asistentes de IA,
+        herramientas con Termux y experimentos web. Cada proyecto
+        indica su estado real.
+      </p>
+
+      <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos">
+        <button class="on" data-f="all">Todos</button>
+        <button data-f="ia">IA · Desarrollo</button>
+        <button data-f="android">Android · Código</button>
+        <button data-f="web">Web · Experimentos</button>
+        <button data-f="futuro">Experimentales</button>
+      </div>
+    </section>
+
+    <!-- IA -->
+    <section class="section group" data-g="ia" id="ia">
+      <div class="section-heading">
+        <p class="eyebrow">01 / IA · DESARROLLO</p>
+        <h2>Inteligencia <span>artificial</span></h2>
+        <p class="section-intro">Asistentes con chat, memoria y herramientas bajo un núcleo común.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="project-card featured">
+          <div class="shot shot-img"><img src="assets/proyectos/dekiller-ai-core.jpg" alt="Chat de Dekiller AI: el asistente se presenta y ofrece ayuda con preguntas, código y análisis de imágenes" loading="lazy"></div>
+          <p class="card-kicker">IA · PROYECTO PRINCIPAL</p>
+          <h3>Dekiller AI Core</h3>
+          <p>Mi asistente de IA personal: un chat web con servidor propio en Node.js y Express, pensado para usarse desde Android. Es la base a la que quiero conectar mis otras herramientas.</p>
+          <p class="show"><b>Ya funciona:</b> chat con memoria de la conversación reciente, envío de imágenes para que la IA las analice, búsqueda de imágenes de Pinterest y comandos para abrir apps de Android. <b>Por ahora</b> usa un solo modelo (GPT-4o mini vía OpenRouter); conectarlo con Coder, Companion y Colab Manager está por hacer.</p>
+          <div class="chips"><span>Node.js</span><span>Express</span><span>OpenRouter</span><span>Android</span></div>
+          <div class="card-foot"><span class="tag wip">En desarrollo</span></div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot shot-img"><img src="assets/proyectos/dekiller-companion.jpg" alt="Dekiller Companion en el móvil: avatar 3D, selector de voz y conversación con el modelo local" loading="lazy"></div>
+          <p class="card-kicker">IA · VOZ · AVATAR</p>
+          <h3>Dekiller Companion</h3>
+          <p>Prototipo local de compañera virtual inspirada en Miku Nakano. Funciona en el propio teléfono con Termux y Ollama, sin dependencias de npm.</p>
+          <p class="show"><b>Ya incluye:</b> chat con un modelo local (Qwen3 1.7B), memoria manual guardada en el dispositivo, voz con las voces de Android/Chrome, dictado por micrófono y un avatar 3D estilizado de prueba. <b>Todavía no:</b> conexión con Dekiller AI Core.</p>
+          <div class="chips"><span>Node.js</span><span>Ollama</span><span>Three.js</span><span>Termux</span></div>
+          <div class="card-foot">
+            <span class="tag wip">Prototipo local</span>
+            <a class="card-link" href="https://github.com/dekiller01/dekiller-companion" target="_blank" rel="noopener noreferrer">Ver código ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot shot-img"><img src="assets/proyectos/dekiller-coder.jpg" alt="Dekiller Coder en el móvil: chat con las pestañas Revisar código, Probar JS y Corregir JS" loading="lazy"></div>
+          <p class="card-kicker">IA · CÓDIGO</p>
+          <h3>Dekiller Coder</h3>
+          <p>Asistente de programación local hecho con Node.js, conectado a Ollama y a modelos como Qwen3, para programar y analizar errores en mis proyectos.</p>
+          <p class="show"><b>Incluye:</b> chat, revisión de código, ejecución de pruebas de JavaScript y propuestas de corrección. Es la versión 0.1.0; los resultados dependen del modelo y de la configuración local.</p>
+          <div class="chips"><span>Node.js 20</span><span>Ollama</span><span>Qwen3</span></div>
+          <div class="card-foot">
+            <span class="tag wip">En desarrollo</span>
+            <a class="card-link" href="https://github.com/dekiller01/dekiller-coder-local" target="_blank" rel="noopener noreferrer">Ver código ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ANDROID -->
+    <section class="section group" data-g="android" id="android">
+      <div class="section-heading">
+        <p class="eyebrow">02 / ANDROID · CÓDIGO</p>
+        <h2>Herramientas <span>móviles</span></h2>
+        <p class="section-intro">Utilidades y experimentos hechos con Termux, Node.js y Python, sin ordenador.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="project-card">
+          <div class="shot">CAPTURA PRÓXIMAMENTE</div>
+          <p class="card-kicker">ANDROID · COLAB</p>
+          <h3>Colab Manager</h3>
+          <p>Administrador asistido de tareas de Google Colab (<code>colabctl</code>) pensado para Android con Termux. No tiene dependencias externas.</p>
+          <p class="show"><b>Hace:</b> registra tareas, genera notebooks listos para abrir, sincroniza estado y resultados (Drive con rclone, GitHub o una carpeta), detecta tareas que dejaron de dar señales y permite reintentar o reanudar. <b>Limitación:</b> Google no ofrece una API pública para iniciar Colab gratuito, así que el notebook se abre y se ejecuta a mano. Probado en local con Colab simulado; falta la prueba con Colab y Drive reales.</p>
+          <div class="chips"><span>Node.js</span><span>Termux</span><span>Python</span><span>rclone</span></div>
+          <div class="card-foot">
+            <span class="tag wip">En desarrollo · v0.1.0</span>
+            <a class="card-link" href="https://github.com/dekiller01/colab-manager" target="_blank" rel="noopener noreferrer">Ver código ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot">CAPTURA PRÓXIMAMENTE</div>
+          <p class="card-kicker">ANDROID · TERMUX</p>
+          <h3>Laboratorio Termux</h3>
+          <p>Mis experimentos con Python, Node.js y servicios locales, desarrollados directamente desde Android.</p>
+          <p class="show"><b>Mostraré:</b> herramientas, comandos, resultados y pequeños tutoriales.</p>
+          <div class="card-foot"><span class="tag ok">Laboratorio activo</span></div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot">CAPTURA PRÓXIMAMENTE</div>
+          <p class="card-kicker">ANDROID · AUDIO</p>
+          <h3>Fish Voice App</h3>
+          <p>Proyecto de voz con síntesis de audio y procesamiento con herramientas como FFmpeg.</p>
+          <p class="show"><b>Mostraré:</b> generación de audio, pruebas y formatos compatibles.</p>
+          <div class="card-foot"><span class="tag wip">En desarrollo</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WEB -->
+    <section class="section group" data-g="web" id="web">
+      <div class="section-heading">
+        <p class="eyebrow">03 / WEB · EXPERIMENTOS</p>
+        <h2>Páginas y <span>aplicaciones</span></h2>
+        <p class="section-intro">Interfaces y pequeñas aplicaciones que mejoro con cada prueba.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="project-card">
+          <div class="shot"><img src="assets/dekiller-portada.jpg" alt="Portada de la web de Dekiller" loading="lazy"></div>
+          <p class="card-kicker">WEB · PORTAFOLIO</p>
+          <h3>Dekiller Personal Web</h3>
+          <p>Esta misma página: presentación, redes sociales, portafolio y catálogo de proyectos.</p>
+          <div class="card-foot">
+            <span class="tag ok">Publicada</span>
+            <a class="card-link" href="index.html">Ver página ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot">CAPTURA PRÓXIMAMENTE</div>
+          <p class="card-kicker">WEB · HERRAMIENTA</p>
+          <h3>Dekiller Web Studio</h3>
+          <p>Creador visual de páginas para diseñar sitios, probarlos y exportar HTML.</p>
+          <p class="show"><b>Mostraré:</b> la interfaz cuando exista una primera versión funcional.</p>
+          <div class="card-foot"><span class="tag idea">Por construir</span></div>
+        </article>
+
+        <article class="project-card">
+          <div class="shot">CAPTURA PRÓXIMAMENTE</div>
+          <p class="card-kicker">WEB · AUTOMATIZACIÓN</p>
+          <h3>Dekiller YouTube Factory</h3>
+          <p>Automatización de contenido con módulos para organizar la dirección creativa y generar guiones.</p>
+          <p class="show"><b>Mostraré:</b> flujo de módulos, generación de guiones y resultados reales de las pruebas.</p>
+          <div class="card-foot"><span class="tag wip">En desarrollo</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIMENTALES -->
+    <section class="section group" data-g="futuro" id="futuro">
+      <div class="section-heading">
+        <p class="eyebrow">04 / LABORATORIO</p>
+        <h2>Experimentales y <span>futuros</span></h2>
+        <p class="section-intro">Ideas en fase de investigación o planificación. Todavía no son productos terminados.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="project-card">
+          <div class="card-icon">◈</div>
+          <p class="card-kicker">3D · VTUBER</p>
+          <h3>Dekiller VTuber Lab</h3>
+          <p>Investigación para crear y modificar un avatar VTuber 3D desde el móvil.</p>
+          <div class="card-foot"><span class="tag idea">Investigación</span></div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-icon">♪</div>
+          <p class="card-kicker">BOT · WHATSAPP</p>
+          <h3>Miku / HuTao WhatsApp Bot</h3>
+          <p>Automatización de un bot de WhatsApp y sus comandos.</p>
+          <div class="card-foot"><span class="tag idea">En pruebas</span></div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-icon">▶</div>
+          <p class="card-kicker">DIRECTOS · JUEGOS</p>
+          <h3>TikTok LIVE interactivo</h3>
+          <p>Arena de juego propia que reacciona a regalos y comentarios en directo.</p>
+          <div class="card-foot"><span class="tag idea">Idea</span></div>
+        </article>
+      </div>
+
+      <p class="notice">
+        Los proyectos están en evolución. Añadiré capturas y enlaces
+        públicos cuando estén listos para mostrarse.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="index.html#inicio">
+      <span class="brand-mark">D</span>
+      <span>DEKILLER<span class="brand-dot">.</span></span>
+    </a>
+
+    <p>
+      Hecho con ideas, paciencia y un toque de azul.
+      <span>© <span id="year"></span> Dekiller</span>
+    </p>
+
+    <a href="index.html#inicio" class="back-top">← Volver al inicio</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Filtros por categoría
+    (function () {
+      var btns = document.querySelectorAll('#filters button');
+      var groups = document.querySelectorAll('section.group');
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          btns.forEach(function (x) { x.classList.remove('on'); });
+          b.classList.add('on');
+          var f = b.dataset.f;
+          groups.forEach(function (g) {
+            g.classList.toggle('hidden', f !== 'all' && g.dataset.g !== f);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
