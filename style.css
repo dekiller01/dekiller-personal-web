@@ -100,17 +100,19 @@ a {
     transform .25s ease;
 }
 
-.about-card:hover,
-.card-grid > *:hover,
-.social-list a:hover {
-  border-color: rgba(83, 196, 255, .48);
-  box-shadow:
-    0 0 22px rgba(30, 150, 255, .09),
-    inset 0 0 18px rgba(30, 150, 255, .025);
-}
+@media (hover: hover) {
+  .about-card:hover,
+  .card-grid > *:hover,
+  .social-list a:hover {
+    border-color: rgba(83, 196, 255, .48);
+    box-shadow:
+      0 0 22px rgba(30, 150, 255, .09),
+      inset 0 0 18px rgba(30, 150, 255, .025);
+  }
 
-.social-list a:hover {
-  transform: translateY(-2px);
+  .social-list a:hover {
+    transform: translateY(-2px);
+  }
 }
 
 /* Portada y avatar */
