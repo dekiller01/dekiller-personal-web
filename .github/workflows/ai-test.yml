@@ -1,0 +1,147 @@
+# Generado por Dekiller Coder. Corre en GitHub, sin secretos.
+name: ai-test
+on:
+  push:
+    branches: ['ai/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar verificador de sitios estáticos
+        shell: bash
+        run: |
+          cat > /tmp/static-check.js <<'JS'
+          // Verificador de sitios estáticos (HTML/CSS/JS). Sin dependencias.
+          const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
+          const root = process.cwd();
+          let errors = 0, files = 0;
+          const rel = p => path.relative(root, p);
+          const err = (f, line, m) => { errors++; console.log('ERROR ' + rel(f) + (line ? ':' + line : '') + ' ' + m); };
+          const lineOf = (s, i) => s.slice(0, i).split('\n').length;
+          const blank = t => t.replace(/[^\n]/g, ' ');
+
+          function walk(d, out = []) {
+            for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+              if (['node_modules', '.git', '.github'].includes(e.name)) continue;
+              const p = path.join(d, e.name);
+              e.isDirectory() ? walk(p, out) : out.push(p);
+            }
+            return out;
+          }
+          const all = walk(root);
+
+          function exists(from, ref) {
+            let u = ref.split('#')[0].split('?')[0];
+            if (!u) return true;
+            try { u = decodeURIComponent(u); } catch {}
+            const p = u.startsWith('/') ? path.join(root, u) : path.resolve(path.dirname(from), u);
+            if (!p.startsWith(root)) return false;
+            if (!fs.existsSync(p)) return false;
+            return !fs.statSync(p).isDirectory() || fs.existsSync(path.join(p, 'index.html'));
+          }
+
+          const COMMENT = new RegExp('<!' + '--[\\s\\S]*?--' + '>', 'g');
+          for (const f of all.filter(p => /\.html?$/i.test(p))) {
+            files++;
+            let s = fs.readFileSync(f, 'utf8').replace(COMMENT, blank);
+            s = s.replace(/(<script\b[^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, b, c) => a + blank(b) + c)
+                 .replace(/(<style\b[^>]*>)([\s\S]*?)(<\/style>)/gi, (m, a, b, c) => a + blank(b) + c);
+
+            for (const m of s.matchAll(/<img\b[^>]*>/gi))
+              if (!/\salt\s*=/i.test(m[0])) err(f, lineOf(s, m.index), '<img> sin atributo alt');
+
+            for (const m of s.matchAll(/<(?:a|link|script|img|source|video|audio|iframe)\b[^>]*?\s(href|src)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)) {
+              const ref = (m[2] ?? m[3]).trim();
+              if (!ref || /^(https?:|\/\/|mailto:|tel:|data:|javascript:|blob:|#)/i.test(ref) || ref.includes('{{') || ref.includes('${')) continue;
+              if (!exists(f, ref)) err(f, lineOf(s, m.index), m[1] + '="' + ref + '" apunta a un archivo que no existe');
+            }
+
+            const idset = new Set([...s.matchAll(/\s(?:id|name)\s*=\s*["']([^"']+)["']/gi)].map(m => m[1]));
+            for (const m of s.matchAll(/<a\b[^>]*?\shref\s*=\s*(?:"#([^"]+)"|'#([^']+)')/gi)) {
+              const id = m[1] ?? m[2];
+              if (id !== 'top' && !idset.has(id)) err(f, lineOf(s, m.index), 'enlace a #' + id + ' sin destino (no existe id="' + id + '")');
+            }
+
+            const ids = {};
+            for (const m of s.matchAll(/\sid\s*=\s*["']([^"']+)["']/gi)) (ids[m[1]] = ids[m[1]] || []).push(lineOf(s, m.index));
+            for (const [id, l] of Object.entries(ids)) if (l.length > 1) err(f, l[1], 'id duplicado "' + id + '"');
+
+            for (const t of ['div', 'section', 'nav', 'header', 'footer', 'main', 'article', 'aside', 'ul', 'ol', 'table', 'form', 'a', 'button', 'span', 'head', 'body', 'html']) {
+              const o = (s.match(new RegExp('<' + t + '(?=[\\s>/])', 'gi')) || []).length;
+              const c = (s.match(new RegExp('</' + t + '\\s*>', 'gi')) || []).length;
+              if (o !== c) err(f, 0, 'etiquetas <' + t + '> desbalanceadas (' + o + ' abren, ' + c + ' cierran)');
+            }
+          }
+
+          for (const f of all.filter(p => /\.css$/i.test(p))) {
+            files++;
+            const s = fs.readFileSync(f, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, '');
+            const o = (s.match(/{/g) || []).length, c = (s.match(/}/g) || []).length;
+            if (o !== c) err(f, 0, 'llaves { } desbalanceadas (' + o + ' abren, ' + c + ' cierran)');
+          }
+
+          function jsOk(file) { return cp.spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' }); }
+          for (const f of all.filter(p => /\.(m?js)$/i.test(p))) {
+            files++;
+            let r = jsOk(f);
+            if (r.status !== 0) { // quizá es un módulo ES del navegador
+              const tmp = path.join(os.tmpdir(), 'chk-' + process.pid + '.mjs');
+              fs.copyFileSync(f, tmp);
+              const r2 = jsOk(tmp); fs.unlinkSync(tmp);
+              if (r2.status === 0) continue;
+              err(f, 0, 'error de sintaxis JS: ' + (r.stderr || '').split('\n').filter(Boolean).slice(0, 4).join(' | '));
+            }
+          }
+
+          console.log('AVISO: verificación estática (enlaces, imágenes, ids, etiquetas, CSS y sintaxis JS); no prueba el comportamiento.');
+          console.log('Sitio estático: ' + files + ' archivos revisados, ' + errors + ' errores');
+          process.exit(errors ? 1 : 0);
+          JS
+      - name: Probar
+        shell: bash
+        run: |
+          set -o pipefail
+          (
+          set -e
+          ran=0
+          if [ -f package.json ]; then
+            ran=1
+            if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install --ignore-scripts; fi
+            if node -e "process.exit((require('./package.json').scripts||{}).test?0:1)"; then
+              npm test
+            else
+              echo "AVISO: sin scripts.test; solo se comprueba la sintaxis"
+              find . -path ./node_modules -prune -o \( -name '*.js' -o -name '*.mjs' \) -print0 | xargs -0 -r -n1 node --check
+            fi
+          fi
+          if [ -f requirements.txt ] || [ -f pyproject.toml ] || ls *.py >/dev/null 2>&1; then
+            ran=1
+            if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            pip install pytest
+            python -m compileall -q .
+            if ls test_*.py tests >/dev/null 2>&1; then python -m pytest -q; else echo "AVISO: sin pruebas de Python"; fi
+          fi
+          if [ "$ran" != 1 ] && [ -n "$(find . \( -name node_modules -o -name .git \) -prune -o -name '*.html' -print -quit)" ]; then
+            ran=1
+            node /tmp/static-check.js
+          fi
+          if [ "$ran" != 1 ]; then echo "No se reconoce el proyecto (package.json, Python o sitio HTML)"; exit 1; fi
+          ) 2>&1 | tee out.txt
+      - name: Reportar
+        if: failure()
+        shell: bash
+        run: |
+          msg=$(tail -c 3500 out.txt 2>/dev/null | tr -d '\r' | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+          echo "::error title=ai-test::${msg}"
