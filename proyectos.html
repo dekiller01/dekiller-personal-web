@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Proyectos de Dekiller: inteligencia artificial, herramientas desde Android y experimentos web.">
+  <meta name="description" content="Catálogo de proyectos de Dekiller: asistentes de IA, herramientas Android, desarrollo web y experimentos en distintas etapas.">
   <meta name="author" content="Dekiller">
   <meta property="og:title" content="Proyectos — Dekiller">
-  <meta property="og:description" content="Asistentes de IA, herramientas con Termux y experimentos web hechos desde el móvil.">
+  <meta property="og:description" content="Proyectos personales creados y probados desde Android: conoce qué funciona, qué sigue en desarrollo y qué está en planificación.">
   <meta property="og:type" content="website">
   <title>Proyectos — Dekiller</title>
   <link rel="stylesheet" href="style.css">
@@ -104,7 +104,7 @@
       <div class="section-heading">
         <p class="eyebrow">01 / IA · DESARROLLO</p>
         <h2>Inteligencia <span>artificial</span></h2>
-        <p class="section-intro">Asistentes con chat, memoria y herramientas bajo un núcleo común.</p>
+        <p class="section-intro">Proyectos de IA en distintas etapas, desde el núcleo personal hasta herramientas locales.</p>
       </div>
 
       <div class="card-grid">
@@ -112,8 +112,8 @@
           <div class="shot shot-img"><img src="assets/proyectos/dekiller-ai-core.jpg" alt="Chat de Dekiller AI: el asistente se presenta y ofrece ayuda con preguntas, código y análisis de imágenes" loading="lazy"></div>
           <p class="card-kicker">IA · PROYECTO PRINCIPAL</p>
           <h3>Dekiller AI Core</h3>
-          <p>Mi asistente de IA personal: un chat web con servidor propio en Node.js y Express, pensado para usarse desde Android. Es la base a la que quiero conectar mis otras herramientas.</p>
-          <p class="show"><b>Ya funciona:</b> chat con memoria de la conversación reciente, envío de imágenes para que la IA las analice, búsqueda de imágenes de Pinterest y comandos para abrir apps de Android. <b>Por ahora</b> usa un solo modelo (GPT-4o mini vía OpenRouter); conectarlo con Coder, Companion y Colab Manager está por hacer.</p>
+          <p>Mi plataforma de IA personal. La meta es reunir chat, memoria y herramientas en un núcleo común, accesible desde mis dispositivos.</p>
+          <p class="show"><b>Estado:</b> el proyecto cuenta con una base de chat y herramientas en desarrollo. La integración de Companion, Coder y Colab Manager todavía está pendiente; no se presenta como un ecosistema ya conectado.</p>
           <div class="chips"><span>Node.js</span><span>Express</span><span>OpenRouter</span><span>Android</span></div>
           <div class="card-foot"><span class="tag wip">En desarrollo</span></div>
         </article>
@@ -122,8 +122,8 @@
           <div class="shot shot-img"><img src="assets/proyectos/dekiller-companion.jpg" alt="Dekiller Companion en el móvil: avatar 3D, selector de voz y conversación con el modelo local" loading="lazy"></div>
           <p class="card-kicker">IA · VOZ · AVATAR</p>
           <h3>Dekiller Companion</h3>
-          <p>Prototipo local de compañera virtual inspirada en Miku Nakano. Funciona en el propio teléfono con Termux y Ollama, sin dependencias de npm.</p>
-          <p class="show"><b>Ya incluye:</b> chat con un modelo local (Qwen3 1.7B), memoria manual guardada en el dispositivo, voz con las voces de Android/Chrome, dictado por micrófono y un avatar 3D estilizado de prueba. <b>Todavía no:</b> conexión con Dekiller AI Core.</p>
+          <p>Prototipo de compañera virtual para Android y Termux, con un modelo local de Ollama y memoria manual guardada en el dispositivo.</p>
+          <p class="show"><b>Versión documentada en GitHub:</b> chat con Qwen3 1.7B y memoria manual local. <b>Pendiente:</b> avatar 3D, micrófono, voz e integración con Dekiller AI Core.</p>
           <div class="chips"><span>Node.js</span><span>Ollama</span><span>Three.js</span><span>Termux</span></div>
           <div class="card-foot">
             <span class="tag wip">Prototipo local</span>
@@ -135,8 +135,8 @@
           <div class="shot shot-img"><img src="assets/proyectos/dekiller-coder.jpg" alt="Dekiller Coder en el móvil: chat con las pestañas Revisar código, Probar JS y Corregir JS" loading="lazy"></div>
           <p class="card-kicker">IA · CÓDIGO</p>
           <h3>Dekiller Coder</h3>
-          <p>Asistente de programación local hecho con Node.js, conectado a Ollama y a modelos como Qwen3, para programar y analizar errores en mis proyectos.</p>
-          <p class="show"><b>Incluye:</b> chat, revisión de código, ejecución de pruebas de JavaScript y propuestas de corrección. Es la versión 0.1.0; los resultados dependen del modelo y de la configuración local.</p>
+          <p>Asistente de programación local desarrollado con Node.js, Ollama y modelos como Qwen3, pensado para ayudar a revisar y probar código desde Android.</p>
+          <p class="show"><b>Estado:</b> versión inicial 0.1.0 en desarrollo. Cuenta con chat y herramientas experimentales para revisar código, probar JavaScript y proponer correcciones; los resultados dependen del modelo y la configuración local.</p>
           <div class="chips"><span>Node.js 20</span><span>Ollama</span><span>Qwen3</span></div>
           <div class="card-foot">
             <span class="tag wip">En desarrollo</span>
@@ -159,8 +159,8 @@
           <div class="shot">CAPTURA PRÓXIMAMENTE</div>
           <p class="card-kicker">ANDROID · COLAB</p>
           <h3>Colab Manager</h3>
-          <p>Administrador asistido de tareas de Google Colab (<code>colabctl</code>) pensado para Android con Termux. No tiene dependencias externas.</p>
-          <p class="show"><b>Hace:</b> registra tareas, genera notebooks listos para abrir, sincroniza estado y resultados (Drive con rclone, GitHub o una carpeta), detecta tareas que dejaron de dar señales y permite reintentar o reanudar. <b>Limitación:</b> Google no ofrece una API pública para iniciar Colab gratuito, así que el notebook se abre y se ejecuta a mano. Probado en local con Colab simulado; falta la prueba con Colab y Drive reales.</p>
+          <p>Administrador asistido de tareas de Google Colab (<code>colabctl</code>) pensado para Android con Termux y Node.js.</p>
+          <p class="show"><b>Funciones documentadas:</b> registra tareas, prepara notebooks, monitoriza señales y ayuda a recuperar ejecuciones mediante un canal elegido (carpeta, GitHub o Drive con rclone). <b>Limitación:</b> no inicia Colab por sí solo; debes abrir el notebook y pulsar “Ejecutar todo”. La sincronización real con Drive todavía requiere validación.</p>
           <div class="chips"><span>Node.js</span><span>Termux</span><span>Python</span><span>rclone</span></div>
           <div class="card-foot">
             <span class="tag wip">En desarrollo · v0.1.0</span>
@@ -221,9 +221,9 @@
           <div class="shot">CAPTURA PRÓXIMAMENTE</div>
           <p class="card-kicker">WEB · AUTOMATIZACIÓN</p>
           <h3>Dekiller YouTube Factory</h3>
-          <p>Automatización de contenido con módulos para organizar la dirección creativa y generar guiones.</p>
+          <p>Idea para organizar un flujo de creación de contenido, desde la planificación creativa hasta los guiones. Todavía está en fase de diseño.</p>
           <p class="show"><b>Mostraré:</b> flujo de módulos, generación de guiones y resultados reales de las pruebas.</p>
-          <div class="card-foot"><span class="tag wip">En desarrollo</span></div>
+          <div class="card-foot"><span class="tag idea">Planificación</span></div>
         </article>
       </div>
     </section>
@@ -233,7 +233,7 @@
       <div class="section-heading">
         <p class="eyebrow">04 / LABORATORIO</p>
         <h2>Experimentales y <span>futuros</span></h2>
-        <p class="section-intro">Ideas en fase de investigación o planificación. Todavía no son productos terminados.</p>
+        <p class="section-intro">Experimentos, investigación y pruebas tempranas. No todos son productos terminados ni cuentan con integración completa.</p>
       </div>
 
       <div class="card-grid">
@@ -249,16 +249,16 @@
           <div class="card-icon">♪</div>
           <p class="card-kicker">BOT · WHATSAPP</p>
           <h3>Miku / HuTao WhatsApp Bot</h3>
-          <p>Automatización de un bot de WhatsApp y sus comandos.</p>
-          <div class="card-foot"><span class="tag idea">En pruebas</span></div>
+          <p>Bot de WhatsApp y comandos asociados, actualmente en fase de pruebas.</p>
+          <div class="card-foot"><span class="tag wip">En pruebas</span></div>
         </article>
 
         <article class="project-card">
           <div class="card-icon">▶</div>
           <p class="card-kicker">DIRECTOS · JUEGOS</p>
           <h3>TikTok LIVE interactivo</h3>
-          <p>Arena de juego propia que reacciona a regalos y comentarios en directo.</p>
-          <div class="card-foot"><span class="tag idea">Idea</span></div>
+          <p>Prototipo de arena 3D con controles y enemigos. La conexión para reaccionar a comentarios y regalos de TikTok LIVE todavía está pendiente.</p>
+          <div class="card-foot"><span class="tag wip">Prototipo · integración pendiente</span></div>
         </article>
       </div>
 
